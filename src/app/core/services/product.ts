@@ -29,12 +29,12 @@ export class ProductService {
       colors: ['Branco'],
       featured: true
     },
-    {
+{
   id: 3,
   name: 'Calças Wide Leg',
   category: 'Mulher',
   price: 39.99,
-  image: 'assets/images/vestido.jpg',
+  image: '/images/colordress.webp',
   description: 'Calças modernas e confortáveis.',
   sizes: ['S', 'M', 'L'],
   colors: ['Preto', 'Bege'],
