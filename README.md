@@ -30,8 +30,7 @@ The focus is on:
 ## 🔜 Planned Features
 
 - Checkout system  
-- User authentication  
-- Backend/API integration  
+- User authentication 
 - Admin panel for product management  
 
 ## 🛠️ Tech Stack
