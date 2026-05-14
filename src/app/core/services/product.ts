@@ -1,48 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products: Product[] = [
-    {
-      id: 1,
-      name: 'Blazer Beige',
-      category: 'Mulher',
-      price: 59.99,
-      image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
-      description: 'Blazer elegante para qualquer ocasião.',
-      sizes: ['S', 'M', 'L'],
-      colors: ['Bege', 'Branco'],
-      featured: true
-    },
-    {
-      id: 2,
-      name: 'Camisa Branca',
-      category: 'Mulher',
-      price: 29.99,
-      image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80',
-      description: 'Clássico essencial no armário.',
-      sizes: ['S', 'M', 'L'],
-      colors: ['Branco'],
-      featured: true
-    },
-{
-  id: 3,
-  name: 'Calças Wide Leg',
-  category: 'Mulher',
-  price: 39.99,
-  image: '/images/colordress.webp',
-  description: 'Calças modernas e confortáveis.',
-  sizes: ['S', 'M', 'L'],
-  colors: ['Preto', 'Bege'],
-  featured: false
-}
-  ];
+  private http = inject(HttpClient);
+  private apiUrl = '/data/products.json';
 
   getProducts(): Observable<Product[]> {
-    return of(this.products);
+    return this.http.get<Product[]>(this.apiUrl);
+  }
+
+  getProductById(id: number): Observable<Product | undefined> {
+    return this.getProducts().pipe(
+      map(products => products.find(product => product.id === id))
+    );
   }
 }

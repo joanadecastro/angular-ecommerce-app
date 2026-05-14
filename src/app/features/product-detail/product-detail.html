@@ -1,1 +1,54 @@
-<p>product-detail works!</p>
+
+<section class="product-detail" *ngIf="product$ | async as product">
+
+  <a routerLink="/products" class="back-link">
+    ← Voltar
+  </a>
+
+  <div class="detail-grid">
+
+    <div class="detail-image">
+      <img [src]="product.image" [alt]="product.name">
+    </div>
+
+    <div class="detail-info">
+      <p class="category">{{ product.category }}</p>
+
+      <h1>{{ product.name }}</h1>
+
+      <p class="price">
+        {{ product.price | currency:'EUR' }}
+      </p>
+
+      <p class="description">
+        {{ product.description }}
+      </p>
+
+      <div class="options">
+        <div>
+          <h4>Tamanhos</h4>
+          <div class="option-list">
+            <button *ngFor="let size of product.sizes">
+              {{ size }}
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h4>Cores</h4>
+          <div class="option-list">
+            <button *ngFor="let color of product.colors">
+              {{ color }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="add-button">
+        Adicionar ao Carrinho
+      </button>
+    </div>
+
+  </div>
+
+</section>

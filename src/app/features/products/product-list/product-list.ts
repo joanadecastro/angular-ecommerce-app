@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ProductService } from '../../../core/services/product';
 
 @Component({
@@ -11,5 +12,6 @@ import { ProductService } from '../../../core/services/product';
 })
 export class ProductListComponent {
   private productService = inject(ProductService);
+
   products$ = this.productService.getProducts();
 }
