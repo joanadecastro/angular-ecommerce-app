@@ -1,1 +1,68 @@
-<p>cart works!</p>
+<section class="cart-page">
+
+  <div class="cart-header">
+    <p class="subtitle">Shopping Bag</p>
+    <h1>Carrinho</h1>
+  </div>
+
+  <div class="empty-cart" *ngIf="items().length === 0">
+    <p>O teu carrinho está vazio.</p>
+    <a href="/products">Ver produtos</a>
+  </div>
+
+  <div class="cart-content" *ngIf="items().length > 0">
+
+    <div class="cart-list">
+
+      <article
+        class="cart-item"
+        *ngFor="let item of items(); let i = index"
+      >
+
+        <img [src]="item.image" [alt]="item.name">
+
+        <div class="cart-info">
+          <p class="category">{{ item.category }}</p>
+          <h3>{{ item.name }}</h3>
+          <p class="description">{{ item.description }}</p>
+          <strong>{{ item.price | currency:'EUR' }}</strong>
+        </div>
+
+        <button
+          class="remove-button"
+          type="button"
+          (click)="remove(i)"
+        >
+          Remover
+        </button>
+
+      </article>
+
+    </div>
+
+    <aside class="cart-summary">
+      <h2>Resumo</h2>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong>{{ total() | currency:'EUR' }}</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Envio</span>
+        <strong>Grátis</strong>
+      </div>
+
+      <div class="summary-total">
+        <span>Total</span>
+        <strong>{{ total() | currency:'EUR' }}</strong>
+      </div>
+
+      <button class="checkout-button">
+        Finalizar Compra
+      </button>
+    </aside>
+
+  </div>
+
+</section>

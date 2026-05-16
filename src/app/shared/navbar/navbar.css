@@ -35,20 +35,65 @@ nav a {
 
   letter-spacing: 3px;
   text-transform: uppercase;
+
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+  opacity: 0.6;
 }
 
 .cart-link {
+  position: relative;
+
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .cart-icon {
   width: 22px;
   height: 22px;
+
   object-fit: contain;
-  transition: transform 0.3s ease;
+
+  filter: grayscale(1) brightness(0.55);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
 }
 
 .cart-link:hover .cart-icon {
-  transform: scale(1.1);
+  transform: scale(1.08);
+
+  filter: grayscale(1) brightness(0.35);
+}
+
+.cart-badge {
+  position: absolute;
+
+  top: -10px;
+  right: -13px;
+
+  min-width: 18px;
+  height: 18px;
+
+  padding: 0 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2db36c;
+  color: #fff;
+
+  border-radius: 999px;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+
+  box-shadow: 0 2px 8px rgba(45, 179, 108, 0.35);
 }

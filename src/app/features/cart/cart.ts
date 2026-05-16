@@ -1,9 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { CartService } from '../../core/services/cart';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './cart.html',
-  styleUrl: './cart.css',
+  styleUrl: './cart.css'
 })
-export class Cart {}
+export class CartComponent {
+
+  cartService = inject(CartService);
+
+  items = this.cartService.items;
+
+  total = this.cartService.total;
+
+  remove(index: number) {
+    this.cartService.removeFromCart(index);
+  }
+}
