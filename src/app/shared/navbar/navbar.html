@@ -1,23 +1,42 @@
 <header class="navbar">
 
-    <a routerLink="/" class="logo">
-    <img src="/logos/logo.JPG" alt="JUH">
+  <a routerLink="/products" class="logo">
+    <img
+      src="/logos/logo.JPG"
+      alt="JUH"
+    >
   </a>
 
   <nav>
-    <a routerLink="/">Home</a>
+
+    <a routerLink="/products">
+      Home
+    </a>
 
     <a routerLink="/products">
       Produtos
     </a>
 
-<a routerLink="/cart" class="cart-link">
-  <img src="/icons/shop.png" alt="Carrinho" class="cart-icon">
+    <a
+      routerLink="/cart"
+      class="cart-link"
+    >
 
-  <span class="cart-badge" *ngIf="cartService.items().length > 0">
-    {{ cartService.items().length }}
-  </span>
-</a>
+      <img
+        src="/icons/shop.png"
+        alt="Carrinho"
+        class="cart-icon"
+      >
+
+      <span
+        class="cart-badge"
+        *ngIf="cartService.totalItems() > 0"
+      >
+        {{ cartService.totalItems() }}
+      </span>
+
+    </a>
+
   </nav>
 
 </header>
